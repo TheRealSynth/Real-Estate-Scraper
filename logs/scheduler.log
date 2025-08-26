@@ -1,0 +1,18 @@
+2025-08-26 04:04:59,678 - __main__ - INFO - Setting up scheduled jobs...
+2025-08-26 04:04:59,678 - __main__ - ERROR - Failed to schedule job daily_austin_houses: 'MockJob' object has no attribute 'day'
+2025-08-26 04:04:59,678 - __main__ - ERROR - Failed to schedule job weekly_market_analysis: 'MockJob' object has no attribute 'monday'
+2025-08-26 04:04:59,678 - __main__ - INFO - Skipping disabled job: hourly_luxury_properties
+2025-08-26 04:04:59,678 - __main__ - INFO - Setup complete. 0 jobs scheduled.
+2025-08-26 04:04:59,678 - __main__ - INFO - Starting scheduled job: daily_austin_houses
+2025-08-26 04:04:59,678 - __main__ - INFO - Mock execution of job: daily_austin_houses
+2025-08-26 04:05:01,678 - __main__ - INFO - Starting scheduled job: weekly_market_analysis
+2025-08-26 04:05:01,678 - __main__ - INFO - Mock execution of job: weekly_market_analysis
+2025-08-26 04:06:19,075 - __main__ - INFO - Setting up scheduled jobs...
+2025-08-26 04:06:19,075 - __main__ - ERROR - Failed to schedule job daily_austin_houses: 'MockJob' object has no attribute 'day'
+2025-08-26 04:06:19,075 - __main__ - ERROR - Failed to schedule job weekly_market_analysis: 'MockJob' object has no attribute 'monday'
+2025-08-26 04:06:19,075 - __main__ - INFO - Skipping disabled job: hourly_luxury_properties
+2025-08-26 04:06:19,075 - __main__ - INFO - Setup complete. 0 jobs scheduled.
+2025-08-26 04:06:19,075 - __main__ - INFO - Starting scheduled job: daily_austin_houses
+2025-08-26 04:06:19,076 - __main__ - INFO - Mock execution of job: daily_austin_houses
+2025-08-26 04:06:21,076 - __main__ - INFO - Starting scheduled job: weekly_market_analysis
+2025-08-26 04:06:21,076 - __main__ - INFO - Mock execution of job: weekly_market_analysis
