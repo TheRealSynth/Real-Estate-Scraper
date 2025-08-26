@@ -402,14 +402,26 @@ class OutputHandler:
                 # Parse dates
                 if item.get('listing_date'):
                     try:
-                        prop.listing_date = datetime.fromisoformat(item['listing_date'])
-                    except:
+                        if isinstance(item['listing_date'], str):
+                            # Handle both ISO format and other common formats
+                            if 'T' in item['listing_date'] or '+' in item['listing_date']:
+                                prop.listing_date = datetime.fromisoformat(item['listing_date'].replace('Z', '+00:00'))
+                            else:
+                                prop.listing_date = datetime.fromisoformat(item['listing_date'])
+                    except (ValueError, TypeError):
+                        # If fromisoformat fails, the date will remain None
                         pass
                 
                 if item.get('scraped_at'):
                     try:
-                        prop.scraped_at = datetime.fromisoformat(item['scraped_at'])
-                    except:
+                        if isinstance(item['scraped_at'], str):
+                            # Handle both ISO format and other common formats
+                            if 'T' in item['scraped_at'] or '+' in item['scraped_at']:
+                                prop.scraped_at = datetime.fromisoformat(item['scraped_at'].replace('Z', '+00:00'))
+                            else:
+                                prop.scraped_at = datetime.fromisoformat(item['scraped_at'])
+                    except (ValueError, TypeError):
+                        # If fromisoformat fails, the date will remain None
                         pass
                 
                 properties.append(prop)

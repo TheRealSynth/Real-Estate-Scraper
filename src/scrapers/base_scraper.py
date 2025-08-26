@@ -3,6 +3,7 @@
 import time
 import random
 import asyncio
+import re
 from abc import ABC, abstractmethod
 from typing import List, Dict, Any, Optional, Union
 from dataclasses import dataclass, asdict
@@ -18,6 +19,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from fake_useragent import UserAgent
 from webdriver_manager.chrome import ChromeDriverManager
+from dateutil import parser as date_parser
 
 from ..utils.config import ScraperConfig
 from ..utils.logger import setup_logger
@@ -195,7 +197,6 @@ class BaseScraper(ABC):
             return None
         
         # Extract numbers from text
-        import re
         numbers = re.findall(r'[\d.]+', number_text.replace(',', ''))
         
         if numbers:
@@ -212,12 +213,9 @@ class BaseScraper(ABC):
         if not date_text:
             return None
         
-        import re
-        from dateutil import parser
-        
         try:
             # Clean the date text
             cleaned = re.sub(r'[^\w\s/.-]', '', date_text.strip())
-            return parser.parse(cleaned)
+            return date_parser.parse(cleaned)
         except Exception:
             return None
