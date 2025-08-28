@@ -1,0 +1,3 @@
+id,title,price,address,bedrooms,bathrooms,square_feet,property_type,source_website,scraped_at
+"test_1","Beautiful 3BR Home in Downtown",750000,"123 Main Street, San Francisco, CA 94102",3,2.5,1800,"House","Zillow","2025-08-26 03:54:46.985414"
+"test_2","Modern Condo with City Views",650000,"456 Oak Avenue, San Francisco, CA 94103",2,2,1200,"Condo","Realtor.com","2025-08-26 03:54:46.985431"
