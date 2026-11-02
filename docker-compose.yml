@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  # Main scraper service
+  scraper:
+    build: .
+    container_name: real-estate-scraper
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./cache:/app/cache
+      - ./config:/app/config
+    environment:
+      - PYTHONPATH=/app
+      - DATABASE_URL=sqlite:///data/properties.db
+      - LOG_LEVEL=INFO
+      - HEADLESS=true
+    networks:
+      - scraper-network
+    restart: unless-stopped
+
+  # Web dashboard service
+  dashboard:
+    build: .
+    container_name: scraper-dashboard
+    command: python web_dashboard.py
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./cache:/app/cache
+    environment:
+      - FLASK_ENV=production
+      - FLASK_APP=web_dashboard.py
+    networks:
+      - scraper-network
+    depends_on:
+      - scraper
+    restart: unless-stopped
+
+  # Scheduler service for automated scraping
+  scheduler:
+    build: .
+    container_name: scraper-scheduler
+    command: python scheduler.py
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./cache:/app/cache
+      - ./config:/app/config
+    environment:
+      - PYTHONPATH=/app
+      - DATABASE_URL=sqlite:///data/properties.db
+    networks:
+      - scraper-network
+    depends_on:
+      - scraper
+    restart: unless-stopped
+
+networks:
+  scraper-network:
+    driver: bridge
+
+volumes:
+  scraper-data:
+  scraper-logs:
+  scraper-cache:

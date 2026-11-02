@@ -1,0 +1,68 @@
+[
+  {
+    "name": "daily_austin_houses",
+    "description": "Daily scraping of Austin houses under $800k",
+    "enabled": true,
+    "schedule": {
+      "type": "daily",
+      "time": "09:00"
+    },
+    "search_criteria": {
+      "location": "Austin, TX",
+      "max_price": 800000,
+      "property_types": [
+        "house"
+      ],
+      "max_pages": 10
+    },
+    "options": {
+      "max_properties": 100,
+      "max_concurrent": 5,
+      "export_format": "database"
+    }
+  },
+  {
+    "name": "weekly_market_analysis",
+    "description": "Weekly comprehensive market analysis",
+    "enabled": true,
+    "schedule": {
+      "type": "weekly",
+      "day": "monday",
+      "time": "06:00"
+    },
+    "search_criteria": {
+      "location": "Dallas, TX",
+      "min_price": 200000,
+      "max_price": 1000000,
+      "max_pages": 20
+    },
+    "options": {
+      "max_properties": 200,
+      "max_concurrent": 3,
+      "export_format": "csv"
+    }
+  },
+  {
+    "name": "hourly_luxury_properties",
+    "description": "Monitor luxury properties every 2 hours",
+    "enabled": false,
+    "schedule": {
+      "type": "interval",
+      "hours": 2
+    },
+    "search_criteria": {
+      "location": "San Francisco, CA",
+      "min_price": 2000000,
+      "property_types": [
+        "house",
+        "condo"
+      ],
+      "max_pages": 5
+    },
+    "options": {
+      "max_properties": 50,
+      "max_concurrent": 8,
+      "export_format": "json"
+    }
+  }
+]
